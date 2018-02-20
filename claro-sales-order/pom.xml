@@ -18,6 +18,7 @@
 		<module>claro-api-spring-dependencies</module>
 		<module>claro-rest-api-common</module> 
 		<module>claro-api-database-mysql</module> 
+		<module>claro-api-messaging</module> 
 		<module>claro-sales-order-api</module>
     </modules>
 

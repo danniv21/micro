@@ -16,12 +16,8 @@
                 <groupId>pe.com.claro</groupId>
                 <artifactId>claro-rest-api-common</artifactId>
                 <version>1.0.0</version>
+                <scope>provided</scope>
 			  </dependency>
-		  <dependency>
-                <groupId>pe.com.claro</groupId>
-                <artifactId>claro-api-database-dependencies</artifactId>
-                <version>${claro.api.database.dependencies}</version>
-		  </dependency>
             
             <dependency>
 			    <groupId>mysql</groupId>
