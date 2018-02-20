@@ -12,6 +12,7 @@
 		<java.version>1.8</java.version>		
 	</properties>    
     <modules>
+    
 	<!--     <module>claro-common</module> -->
 		<module>claro-api-database-dependencies</module>
 		<module>claro-api-spring-dependencies</module>
