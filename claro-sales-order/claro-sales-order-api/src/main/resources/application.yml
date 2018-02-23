@@ -20,3 +20,8 @@ spring:
 
 entity.manager.packagesToScan: pe.com.claro
 application.name: claro-sales-order
+
+spring.rabbitmq.host: 192.168.8.105
+spring.rabbitmq.port: 5672
+spring.rabbitmq.username: test
+spring.rabbitmq.password: test

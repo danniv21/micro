@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>pe.com.claro</groupId>
-  <artifactId>claro-api-messaging</artifactId>
+  <artifactId>claro-api-messaging-producer</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>claro-api-messaging</name>
+  <name>claro-api-messaging-producer</name>
   <url>http://maven.apache.org</url>
 
   <properties>

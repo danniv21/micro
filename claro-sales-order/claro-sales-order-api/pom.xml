@@ -32,7 +32,7 @@
           
             <dependency>
                 <groupId>pe.com.claro</groupId>
-                <artifactId>claro-api-messaging</artifactId>
+                <artifactId>claro-api-messaging-producer</artifactId>
                 <version>1.0.0</version>
 	      </dependency>
             
