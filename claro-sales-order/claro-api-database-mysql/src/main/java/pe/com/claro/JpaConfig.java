@@ -1,6 +1,7 @@
 package pe.com.claro;
 
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import javax.sql.DataSource;
 
@@ -50,6 +51,9 @@ class JpaConfig implements TransactionManagementConfigurer {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
+        // We will wait for 15 seconds to get a connection from the pool.
+        // Default is 30, but it shouldn't be taking that long.
+        config.setConnectionTimeout(TimeUnit.SECONDS.toMillis(15)); // 15000
 
         config.addDataSourceProperty("useUnicode", "true");
         config.addDataSourceProperty("characterEncoding", "utf8");

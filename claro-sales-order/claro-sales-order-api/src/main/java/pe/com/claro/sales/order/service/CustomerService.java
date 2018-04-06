@@ -1,17 +1,15 @@
-package pe.com.claro.sales.order.domain.service;
+package pe.com.claro.sales.order.service;
 
 
 
-import pe.com.claro.common.resource.exception.EntityNotFoundException;
-
-import org.eclipse.jetty.util.thread.ExecutionStrategy.Producer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import pe.com.claro.sales.order.domain.repository.CustomerRepository;
+import pe.com.claro.common.resource.exception.CustomEntityNotFoundException;
 import pe.com.claro.sales.order.model.Customer;
+import pe.com.claro.sales.order.repository.CustomerRepository;
 
 
 @Service
@@ -22,11 +20,11 @@ public class CustomerService {
 	@Autowired
 	private pe.com.claro.sales.order.message.component.Producer producer;
 	
-	public Customer getPostCustomer(Long customerId) throws EntityNotFoundException {
+	public Customer getPostCustomer(Long customerId){
 		logger.debug("Get post " + customerId);
 		Customer customer = customerRepository.findOne(customerId);
 		if (customer == null) {
-			 throw new EntityNotFoundException(Customer.class, "id", customerId.toString());
+			 throw new CustomEntityNotFoundException("No se encontro el cliente con id=" +customerId.toString());
 		}
 		producer.produce(customer);
 		return customer;

@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.HttpStatus;
 
-import pe.com.claro.common.resource.exception.EntityNotFoundException;
-import pe.com.claro.sales.order.domain.service.CustomerService;
 import pe.com.claro.sales.order.model.Customer;
+import pe.com.claro.sales.order.service.CustomerService;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -27,7 +27,7 @@ class CustomerRestController {
     produces = APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-	Customer search(@PathVariable Long customerId) throws EntityNotFoundException {
+	Customer search(@PathVariable Long customerId){
 		
 		return customerService.getPostCustomer(customerId);
 	}

@@ -1,4 +1,4 @@
-package pe.com.claro.sales.order.domain.repository;
+package pe.com.claro.sales.order.repository;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
