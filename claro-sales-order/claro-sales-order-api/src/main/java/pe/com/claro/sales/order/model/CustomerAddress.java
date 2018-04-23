@@ -6,6 +6,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
 import pe.com.claro.common.model.BaseEntity;
 
 
@@ -15,6 +16,7 @@ import pe.com.claro.common.model.BaseEntity;
  */
 @Entity
 @Table(name = "CustomerAddress")
+@ApiModel(description="Informacion de las direcciones del cliente")
 public class CustomerAddress extends BaseEntity{
 	private static final long serialVersionUID = 1L;
 

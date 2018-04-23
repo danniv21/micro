@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
 import pe.com.claro.common.model.BaseEntity;
 import pe.com.claro.sales.order.model.CustomerAddress;
 
@@ -21,6 +22,7 @@ import pe.com.claro.sales.order.model.CustomerAddress;
  */
 @Entity
 @Table(name = "Customer")
+@ApiModel(description="informacion del cliente")
 public class Customer extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 

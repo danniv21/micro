@@ -20,6 +20,7 @@
 		<junit.version>4.7</junit.version>
 		<log4j.version>1.2.16</log4j.version>
 		<slf4j.version>1.6.1</slf4j.version>
+		<spring-cloud.version>Dalston.SR1</spring-cloud.version>
 	</properties>
 	
 	   <parent>
@@ -96,6 +97,11 @@
 			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 		
+			<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-orm</artifactId>
@@ -158,6 +164,20 @@
 		</dependency>
 		
 	</dependencies>
+	
+	
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
 			<plugin>

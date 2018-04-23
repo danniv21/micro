@@ -1,6 +1,8 @@
 package pe.com.claro.common.resource.exception;
 
 import lombok.extern.slf4j.Slf4j;
+
+import org.hibernate.engine.jdbc.spi.SqlExceptionHelper;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -196,10 +198,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     
     @ExceptionHandler(CustomEntityNotFoundException.class)
-    public final ResponseEntity<Object> handleUserNotFoundException(CustomEntityNotFoundException ex, WebRequest request) {
+    protected ResponseEntity<Object> handleUserNotFoundException(CustomEntityNotFoundException ex, WebRequest request) {
     	 ApiError apiError = new ApiError(NOT_FOUND);
          apiError.setMessage(ex.getMessage());
          return buildResponseEntity(apiError);  	
     }
 
+
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
+        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR);
+        apiError.setMessage(ex.getMessage());
+    	
+    	//ApiError apiError = new apiError(new Date(), ex.getMessage(),
+          //request.getDescription(false));
+      return new ResponseEntity<>(apiError, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
