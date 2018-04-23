@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pe.com.claro.common.resource.exception.CustomEntityNotFoundException;
 import pe.com.claro.sales.order.model.Customer;
 import pe.com.claro.sales.order.repository.CustomerRepository;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 
 @Service
@@ -28,7 +29,9 @@ public class CustomerService {
 	@Value("${application.appname.customerservice.message001}")
 	private String message001;
 	
+	
 	@Transactional(readOnly = true)
+	@HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod")
 	public Customer getPostCustomer(Long customerId){
 		logger.debug("Get post " + customerId);
 		Customer customer = customerRepository.findOne(customerId);
@@ -38,4 +41,9 @@ public class CustomerService {
 		producer.produce(customer);
 		return customer;
 	}
+	public Customer getTokenHystrixFallbackMethod(Long customerId) {
+        logger.error("Error en el Sistema Intente Nuevamente ");
+        Customer customer = null;
+        return customer;
+    }
 }
