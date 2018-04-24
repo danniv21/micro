@@ -31,14 +31,14 @@ public class CustomerService {
 	
 	
 	@Transactional(readOnly = true)
-	@HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod")
+//	@HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod")
 	public Customer getPostCustomer(Long customerId){
 		logger.debug("Get post " + customerId);
 		Customer customer = customerRepository.findOne(customerId);
 		if (customer == null) {
 			 throw new CustomEntityNotFoundException(message001 + " "+customerId.toString());
 		}
-		producer.produce(customer);
+//		producer.produce(customer);
 		return customer;
 	}
 	public Customer getTokenHystrixFallbackMethod(Long customerId) {
