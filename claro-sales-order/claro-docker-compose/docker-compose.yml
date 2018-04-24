@@ -7,12 +7,16 @@ services:
      - "9300:9300"
     volumes:
      - /data:/usr/share/elasticsearch/data
+    networks:
+      - default
   kibana:
     image: kibana
     ports:
      - "5601:5601"
     links:
      - elasticsearch
+    networks:
+      - default
   logstash:
     build: logstash
     command: logstash -f /conf/logstash-spring-boot.conf
@@ -21,11 +25,15 @@ services:
      - "5044:5044"
     links:
      - elasticsearch
+    networks:
+      - default
   mysql:
     image: mysql:5.6.23
     container_name: mysql
     env_file:
      - env
+    networks:
+      - default
   salesorderapi:
     image: azpent/salesorderapi
     depends_on:
@@ -33,11 +41,15 @@ services:
     links:
      - mysql
      - logstash
+    networks:
+      - default
   serverconfig:
     image: azpent/serverconfig
     ports:
      - "3333:3333"
     container_name: serverconfig
+    networks:
+      - default
   serverdiscovery:
     image: azpent/serverdiscovery
     ports:
@@ -45,6 +57,8 @@ services:
     container_name: serverdiscovery
     depends_on:
      - serverconfig
+    networks:
+      - default
   serverzuul:
     image: azpent/serverzuul
     ports:
@@ -52,6 +66,8 @@ services:
     container_name: serverzuul
     depends_on:
      - serverconfig
+    networks:
+      - default
   serverturbine:
     image: azpent/serverturbine
     ports:
@@ -61,6 +77,8 @@ services:
      - serverdiscovery
     links:
      - salesorderapi
+    networks:
+      - default
   serverhystrixdashboard:
     image: azpent/serverhystrixdashboard
     ports:
@@ -68,4 +86,10 @@ services:
     container_name: serverhystrixdashboard
     depends_on:
      - serverdiscovery
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: demomicro
 
