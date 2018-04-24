@@ -5,6 +5,7 @@
     <parent>
         <groupId>pe.com.claro</groupId>
         <artifactId>claro-sales-order</artifactId>
+        <!--<artifactId>claro-sales-order</artifactId>-->
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
@@ -56,6 +57,21 @@
             <artifactId>spring-cloud-starter-hystrix</artifactId>
             <version>1.2.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>4.9</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <version>1.2.3</version>
+        </dependency>
     </dependencies> 
     <build>
         <finalName>salesorderapi</finalName>
@@ -89,6 +105,7 @@
                 <version>0.4.13</version>
                 <configuration>
                     <imageName>azpent/${project.artifactId}</imageName>
+                    <!--                    <imageName>azpent/${project.artifactId}</imageName>-->
                     <baseImage>jgeusebroek/minimal-jre-8</baseImage>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
