@@ -40,7 +40,7 @@ class CustomerRestController {
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     Customer search(@PathVariable Long customerId) {
-        logger.error("Prueba Cambio: [" + message001 + "]");
+        //logger.error("Prueba Cambio: [" + message001 + "]");
 
         return customerService.getPostCustomer(customerId);
     }

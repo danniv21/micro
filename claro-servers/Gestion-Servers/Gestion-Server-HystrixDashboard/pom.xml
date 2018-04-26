@@ -5,22 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.Gest.server.hystrix</groupId>
-    <artifactId>serverhystrixdashboard</artifactId>
+    <artifactId>Server-Hystrix-DashBoard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Server-HystrixDashBoard</name>
-    <description>Demo project for Spring Boot implementing Hystrix DashBoard</description>
-
-
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.0.RELEASE</version>
-        <relativePath />
-    </parent>
-
-
+    <description>Project for Spring Boot implementing Hystrix DashBoard</description>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
@@ -30,41 +20,34 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>        
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <version>2.0.0.M2</version>
         </dependency>
     </dependencies>
-	
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Brixton.SR5</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
+        <finalName>serverhystrixdashboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>
+                                com.Gest.server.hystrix.HystrixDashBoardServiceApp
+                            </mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
                 <configuration>
-                    <imageName>azpent/${project.artifactId}</imageName>
+                    <imageName>azpent/${project.build.finalName}</imageName>
                     <baseImage>jgeusebroek/minimal-jre-8</baseImage>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>

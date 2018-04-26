@@ -4,9 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.context.annotation.Bean;
-
-import com.Gest.server.zuul.filters.PreFilter;
 
 
 /**
@@ -25,10 +22,10 @@ public class EdgeServiceApp {
 
 	}
 
-	@Bean
-	public PreFilter preFilter() {
-		return new PreFilter();
-	}
+//	@Bean
+//	public PreFilter preFilter() {
+//		return new PreFilter();
+//	}
 	
 
 }

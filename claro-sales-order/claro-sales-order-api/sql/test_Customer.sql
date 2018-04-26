@@ -45,7 +45,7 @@ CREATE TABLE `Customer` (
 
 LOCK TABLES `Customer` WRITE;
 /*!40000 ALTER TABLE `Customer` DISABLE KEYS */;
-INSERT INTO `Customer` VALUES (1,'Manuel','Rodriguez Sanchez','rsanchez@gmail.com',0,'dw','dy','2017-10-26 03:05:21','0000-00-00 00:00:00',0,1);
+INSERT INTO `Customer` VALUES (1,'Manuel','Rodriguez Sanchez','rsanchez@gmail.com',0,'dw','dy','2017-10-26 03:05:21','2018-01-01 00:00:00',0,1);
 /*!40000 ALTER TABLE `Customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
