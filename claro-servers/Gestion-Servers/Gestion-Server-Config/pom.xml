@@ -46,7 +46,8 @@
                 <version>0.4.13</version>
                 <configuration>
                     <imageName>azpent/${project.build.finalName}</imageName>
-                    <baseImage>jgeusebroek/minimal-jre-8</baseImage>
+                    <!--<baseImage>jgeusebroek/minimal-jre-8</baseImage>-->
+                    <baseImage>openjdk:8-jre-alpine</baseImage>
                     <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
                     <resources>
                         <resource>
