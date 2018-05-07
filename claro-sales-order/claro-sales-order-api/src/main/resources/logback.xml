@@ -7,7 +7,7 @@
         <destination>192.168.8.101:5000</destination>
         <!--        <destination>logstash:5044</destination>-->
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <customFields>{"service_name":"SalesOrderApi","appname":"${parent.pom.artifactId}","version":"${parent.pom.version}"}</customFields>
+            <customFields>{"appname":"${name}","artefactId":"${artifactId}","version":"${version}"}</customFields>
         </encoder>
     </appender>
     <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
