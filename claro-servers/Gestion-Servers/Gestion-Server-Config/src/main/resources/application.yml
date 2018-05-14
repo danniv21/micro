@@ -1,3 +1,9 @@
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
 server:
   port: ${PORT:3333}
 spring: 
