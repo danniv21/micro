@@ -7,8 +7,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>Gestion-Server-Config</module>
-        <module>Gestion-Server-Discovery</module>
-        <module>Gestion-Server-Zuul</module>
         <module>Gestion-Server-Turbine</module>
         <module>Gestion-Server-HystrixDashboard</module>
     </modules>

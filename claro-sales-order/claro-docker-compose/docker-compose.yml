@@ -9,8 +9,6 @@ services:
       - default
   salesorderapi:
     image: azpent/salesorderapi
-    depends_on:
-     - serverdiscovery
     networks:
       - default
     links:
@@ -22,31 +20,11 @@ services:
     container_name: serverconfig
     networks:
       - default
-  serverdiscovery:
-    image: azpent/serverdiscovery
-    ports:
-     - "8761:8761"
-    container_name: serverdiscovery
-    depends_on:
-     - serverconfig
-    networks:
-      - default
-  serverzuul:
-    image: azpent/serverzuul
-    ports:
-     - "8097:8097"
-    container_name: serverzuul
-    depends_on:
-     - serverconfig
-    networks:
-      - default
   serverturbine:
     image: azpent/serverturbine
     ports:
      - "8081:8081"
     container_name: serverturbine
-    depends_on:
-     - serverdiscovery
     links:
      - salesorderapi
     networks:
@@ -56,8 +34,6 @@ services:
     ports:
      - "8089:8089"
     container_name: serverhystrixdashboard
-    depends_on:
-     - serverdiscovery
     networks:
       - default
 networks:
