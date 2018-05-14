@@ -1,0 +1,7 @@
+## YAML Template.
+spring:  
+  application:
+    name: serverhystrixdashboard
+server:
+   port: 8089
+ 

@@ -1,17 +1,13 @@
 package pe.com.claro.common.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-import org.hibernate.annotations.Parameter;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
-import org.springframework.format.annotation.DateTimeFormat;
 
 
 @MappedSuperclass
@@ -30,18 +26,14 @@ public class BaseEntity implements Comparable<BaseEntity>, Serializable {
 	@Column(name = "createdBy")
 	private String createdBy;
 
-	@Column(name = "createdDate")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = { @Parameter(name = "databaseZone", value = "jvm") })
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
-	private DateTime createdDate;
+	@Column(name = "createdDate", nullable = false)
+	private Date createdDate;
 
 	@Column(name = "lastModifiedBy")
 	private String lastModifiedBy;
 
-	@Column(name = "lastModifiedDate")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime", parameters = { @Parameter(name = "databaseZone", value = "jvm") })
-	@DateTimeFormat(pattern = "MM/dd/yyyy")
-	private DateTime lastModifiedDate;
+	@Column(name = "lastModifiedDate" , nullable = false)
+	private Date lastModifiedDate;
 
 	@Column(name = "deleted")
 	private boolean deleted;
@@ -62,11 +54,11 @@ public class BaseEntity implements Comparable<BaseEntity>, Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public DateTime getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(DateTime createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -78,11 +70,11 @@ public class BaseEntity implements Comparable<BaseEntity>, Serializable {
 		this.lastModifiedBy = lastModifiedBy;
 	}
 
-	public DateTime getLastModifiedDate() {
+	public Date getLastModifiedDate() {
 		return lastModifiedDate;
 	}
 
-	public void setLastModifiedDate(DateTime lastModifiedDate) {
+	public void setLastModifiedDate(Date lastModifiedDate) {
 		this.lastModifiedDate = lastModifiedDate;
 	}
 

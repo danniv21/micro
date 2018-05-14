@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: salesorderapi
+  cloud:
+    config:
+      uri: http://serverconfig:3333
+

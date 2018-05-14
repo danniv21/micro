@@ -1,6 +1,7 @@
 package pe.com.claro;
 
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import javax.sql.DataSource;
 
@@ -42,7 +43,29 @@ class JpaConfig implements TransactionManagementConfigurer {
     @Value("${entity.manager.packagesToScan}")
     private String packagesToScan;
     
-
+    @Value("${spring.hibernate.unicode}")
+    private String unicode;
+    
+    @Value("${spring.hibernate.characterEncoding}")
+    private String characterEncoding;
+    
+    @Value("${spring.hibernate.cachePrepStmts}")
+    private String cachePrepStmts;
+    
+    @Value("${spring.hibernate.prepStmtCacheSize}")
+    private String prepStmtCacheSize;
+      
+    @Value("${spring.hibernate.prepStmtCacheSqlLimit}")
+    private String prepStmtCacheSqlLimit;
+    
+    @Value("${spring.hibernate.useServerPrepStmts}")
+    private String useServerPrepStmts;
+    
+    @Value("${spring.dataSource.connectionTimeout}")
+    private long connectionTimeout;
+    
+    
+    
     @Bean
     public DataSource configureDataSource() {
         HikariConfig config = new HikariConfig();
@@ -50,13 +73,16 @@ class JpaConfig implements TransactionManagementConfigurer {
         config.setJdbcUrl(url);
         config.setUsername(username);
         config.setPassword(password);
+        // We will wait for 15 seconds to get a connection from the pool.
+        // Default is 30, but it shouldn't be taking that long.
+        config.setConnectionTimeout(TimeUnit.SECONDS.toMillis(connectionTimeout)); // 15000
 
-        config.addDataSourceProperty("useUnicode", "true");
-        config.addDataSourceProperty("characterEncoding", "utf8");
-        config.addDataSourceProperty("cachePrepStmts", "true");
-        config.addDataSourceProperty("prepStmtCacheSize", "250");
-        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-        config.addDataSourceProperty("useServerPrepStmts", "true");
+        config.addDataSourceProperty("useUnicode", unicode);
+        config.addDataSourceProperty("characterEncoding", characterEncoding);
+        config.addDataSourceProperty("cachePrepStmts", cachePrepStmts);
+        config.addDataSourceProperty("prepStmtCacheSize", prepStmtCacheSize);
+        config.addDataSourceProperty("prepStmtCacheSqlLimit", prepStmtCacheSqlLimit);
+        config.addDataSourceProperty("useServerPrepStmts", useServerPrepStmts);
 
         return new HikariDataSource(config);
     }

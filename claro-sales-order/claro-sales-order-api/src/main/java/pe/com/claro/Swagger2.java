@@ -5,11 +5,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -25,7 +25,11 @@ public class Swagger2 {
 
     @Value("${application.name}")
     private String title;
+    
+    @Value("${application.description}")
+    private String description;
 
+    
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -37,13 +41,9 @@ public class Swagger2 {
     }
 
     private ApiInfo apiInfo() {
-      /*  Contact contact=new Contact("Binux",
-                "http://git.oschina.net/binu/xbin-store","xu.binux@gmail.com");
-*/
         return new ApiInfoBuilder()
-                .title(title + " RESTful API")
-                ///.description(title + " RESTful API")
-                //.contact(contact)
+                .title(title)
+                .description(description)
                 .version("1.0")
                 .build();
     }
