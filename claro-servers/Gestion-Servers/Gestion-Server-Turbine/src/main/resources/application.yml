@@ -5,10 +5,10 @@ spring:
 server:
    port: 8081
  
-eureka:  
-  client:
-    serviceUrl:
-      defaultZone: http://serverdiscovery:8761/eureka/
+#eureka:  
+#  client:
+#    serviceUrl:
+#      defaultZone: http://serverdiscovery:8761/eureka/
  
 turbine:
   aggregator:
