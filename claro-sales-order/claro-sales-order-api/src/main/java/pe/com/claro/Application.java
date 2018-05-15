@@ -9,8 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableDiscoveryClient
-@EnableCircuitBreaker
 @SpringBootApplication
 public class Application {
 
