@@ -8,7 +8,7 @@
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent> -->
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <groupId>pe.com.claro</groupId>
     <artifactId>salesorderapi</artifactId>
     <packaging>jar</packaging>
@@ -100,17 +100,18 @@
             </plugin>
         </plugins>
     </build>
-    <distributionManagement>
 
-             <repository>
-
-                    <id>releases</id>
-
-                    <name>Nexus Release</name>
-
-                    <url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url>
-
-             </repository>
-
-       </distributionManagement>
+         <distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Nexus Release</name>
+			<url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Nexus Snapshots</name>
+			<url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+         
 </project>
