@@ -1,0 +1,16 @@
+## YAML Template.
+spring:  
+  application:
+    name: serverturbine
+server:
+   port: 8081
+ 
+#eureka:  
+#  client:
+#    serviceUrl:
+#      defaultZone: http://serverdiscovery:8761/eureka/
+ 
+turbine:
+  aggregator:
+    clusterConfig: SALESORDERAPI
+  appConfig: salesorderapi

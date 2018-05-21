@@ -1,0 +1,15 @@
+version: '3'
+services:
+  salesorderapi:
+    image: azpent/salesorderapi
+    external_links:
+     - mysql
+     - serverconfig
+     - serverdiscovery
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: demomicro
+

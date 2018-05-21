@@ -1,0 +1,43 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.6.23
+    container_name: mysql
+    env_file:
+     - env
+    networks:
+      - default
+  salesorderapi:
+    image: azpent/salesorderapi
+    networks:
+      - default
+    links:
+     - mysql
+  serverconfig:
+    image: azpent/serverconfig
+    ports:
+     - "3333:3333"
+    container_name: serverconfig
+    networks:
+      - default
+  serverturbine:
+    image: azpent/serverturbine
+    ports:
+     - "8081:8081"
+    container_name: serverturbine
+    links:
+     - salesorderapi
+    networks:
+      - default
+  serverhystrixdashboard:
+    image: azpent/serverhystrixdashboard
+    ports:
+     - "8089:8089"
+    container_name: serverhystrixdashboard
+    networks:
+      - default
+networks:
+  default:
+    external:
+      name: demomicro
+

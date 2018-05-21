@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: kompose-windows-amd64.exe --provider openshift --file docker-compose.yml
+      convert
+    kompose.version: 1.12.0 (0ab07be)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: serverturbine
+  name: serverturbine
+spec:
+  ports:
+  - name: "8081"
+    port: 8081
+    targetPort: 8081
+  selector:
+    io.kompose.service: serverturbine
+status:
+  loadBalancer: {}

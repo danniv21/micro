@@ -1,0 +1,9 @@
+## YAML Template.
+spring:  
+  application:
+    name: serverzuul
+  cloud:
+    config:
+      failFast: true
+      uri: http://serverconfig:3333
+      # uri: http://localhost:3333

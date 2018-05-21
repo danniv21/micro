@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kompose.cmd: kompose-windows-amd64.exe --provider openshift --file docker-compose.yml
+      convert
+    kompose.version: 1.12.0 (0ab07be)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: salesorderapi
+  name: salesorderapi
+spec:
+  replicas: 1
+  selector:
+    io.kompose.service: salesorderapi
+  strategy:
+    resources: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: salesorderapi
+    spec:
+      containers:
+      - image: ' '
+        name: salesorderapi
+        resources: {}
+      restartPolicy: Always
+  test: false
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - salesorderapi
+      from:
+        kind: ImageStreamTag
+        name: salesorderapi:latest
+    type: ImageChange
+status: {}
