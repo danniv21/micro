@@ -3,5 +3,5 @@ spring:
     name: salesorderapi
   cloud:
     config:
-      uri: http://serverconfig:3333
+      uri: http://serverconfig:8080
 
