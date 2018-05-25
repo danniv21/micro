@@ -13,7 +13,7 @@
   </activeProfiles>
   <profiles>
     <profile>
-      <id>nexus</id>|
+      <id>nexus</id>
       <repositories>
         <repository>
           <id>central</id>
