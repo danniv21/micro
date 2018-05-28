@@ -39,10 +39,25 @@
         </pluginRepository>
       </pluginRepositories>
     </profile>
+	  
+	  	<profile>
+     <id>sonar</id>
+    <activation>
+        <activeByDefault>true</activeByDefault>
+    </activation> 
+	<properties>
+    <sonar.host.url>
+         http://sonarqube-ci-cd.cloudapps.tim.com.pe
+     </sonar.host.url>
+            <sonar.login>admin</sonar.login>
+            <sonar.password>admin</sonar.password>
+      </properties>
+   </profile>
   </profiles>
 
   <pluginGroups>
     <pluginGroup>org.sonatype.plugins</pluginGroup>
+    <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
   </pluginGroups>
 
   <servers>
