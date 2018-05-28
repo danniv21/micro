@@ -116,7 +116,7 @@
     <distributionManagement>
 		<repository>
 			<id>releases</id>
-			<name>Nexus Release</name>
+			 <name>Nexus Release</name>
 			<url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url>
 		</repository>
 		<!-- <snapshotRepository> -->
