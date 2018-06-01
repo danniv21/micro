@@ -1,0 +1,105 @@
+#mode of the microservice: PROD=Production environment, MOCKED=Testing environment
+mode: MOCKED
+
+#Config Login
+logging:
+    config: classpath:logback.xml 
+
+#Variables Headers
+header:
+    consumer:
+    country: PE
+    dispositivo: APK MOVIL
+    language: ES
+    msgType: Request
+    system: APPMICLARO
+    userId: USRAPKMICLARO
+    wsIp: 192.168.24.30
+    canal: App
+    authorization: Basic dXNybWljbGFyb2FwcDpKWVVTREdGJDREODlk
+    modulo:
+        ws:
+            consulta:
+                plan:
+                    prepago: consultaplanprepago
+            consumos:
+                prepago: consumosprepago
+    operation:
+        obtener:
+            datos:
+                plan: obtenerdatosplan
+        consulta:
+            resumen: consultarresumen
+
+#Variables Timeout
+time:
+    out:
+        connection:
+            consulta:
+                plan:
+                    prepago: 15000
+            consumos:
+                prepago: 15000
+            detail:
+                plan: 15000
+            compra:
+                paquete: 15000
+        request:
+            consulta:
+                plan:
+                    prepago: 15000
+            consumos:
+                prepago: 15000
+            detail:
+                plan: 15000
+            compra:
+                paquete: 15000
+
+#Variables IDF e IDT
+codigo:
+    respuesta:
+        idf:
+            cero: 0
+            uno: 1
+            dos: 2
+            tres: 3
+            cuatro: 4
+        idt:
+            uno: -1
+            dos: -2
+            tres: -3
+            cuatro: -4
+            cinco: -5
+mensaje:
+    respuesta:
+        idf:
+            cero: Operación Exitosa
+            uno: Se debe enviar campos obligatorios
+            dos: No se obtuvo resultados en el $me del WS $ws
+            tres: No se obtuvo resultados al consultar la descripcion del subtipo prepago.
+            cuatro: La linea consultada no pertenece a los planes TUN, JUERGA o ESPECIAL
+        idt:
+            uno: Error de timeout en el $me del WS $ws
+            dos: Error de disponibilidad en $ws - $me
+            tres: Error por timeout en la bd $bd
+            cuatro: Error por disponibilidad en la bd $bd
+            cinco: Ocurrió un error inesperado
+
+#URL de servicios
+uri:
+    rest:
+        consulta:
+            plan:
+                prepago: http://172.19.172.6:80/v1.0/postventa/customer_Domain/custInfo/consultaPlanPrepago/obtenerDatosPlan               
+        consumos:
+            prepago: http://172.19.172.6:80/v1.0/postventa/customer_Domain/custInfo/consumosPostpago/consultaResumen            
+        detail:
+            plan: http://ms-planadicional:8080/plan/detailplan/
+        validacion:
+            compra:
+                paquete: http://ms-validacion-comprapaquete:8080/validacion/comprapaquete
+
+descripcion:
+    tipo:
+        plan:
+            control: OTRO
