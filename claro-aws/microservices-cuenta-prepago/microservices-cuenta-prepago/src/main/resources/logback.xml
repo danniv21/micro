@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- Default config and other properties -->
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE"
+		value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-{java.io.tmpdir:-/tmp}}/}spring.log}" />
+
+	<!-- Profile independent loggers -->
+	<logger name="com.claro.miclaro.cuenta.prepago" level="DEBUG" />
+	<logger name="org.springframework" level="INFO" />
+
+
+	<appender name="APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} -
+				%msg%n</pattern>
+			<charset>utf8</charset>
+		</encoder>
+	</appender>
+
+	<logger name="org.springframework.security" level="DEBUG" />
+
+	<!-- Root logger -->
+	<root level="INFO">
+		<appender-ref ref="APPENDER" />
+	</root>
+</configuration>

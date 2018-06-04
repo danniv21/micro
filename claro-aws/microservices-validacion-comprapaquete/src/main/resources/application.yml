@@ -1,0 +1,60 @@
+microservicio:
+    name: microservices-validacion-comprapaquete
+   
+#LOCALPARAMS
+spring:
+    datasource:
+        hikari:
+            jdbcUrl: jdbc:mysql://mysql:3306/dbclarodesarrollo 
+            username: root
+            password: R00tPass0wrd
+            driver-class-name: com.mysql.jdbc.Driver
+            connectionTimeout: 10000
+            maxLifetime: 3600000
+            maximumPoolSize: 20
+            minimumIdle: 1
+            idleTimeout: 10000
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+                id:
+                    new_generator_mappings: false
+            format_sql: true
+        hibernate:
+            ddl-auto: update
+    profiles:
+        active: dev
+    jackson:
+        default-property-inclusion: NON_NULL
+        
+logging:
+    level:
+        org:
+            hibernate:
+                SQL: ERROR
+                type:
+                    descriptor:
+                        sql:
+                            BasicBinder: TRACE
+    config:
+        classpath: logback.xml
+        
+#IDF
+validacioncomprapaquete:
+    codigo:
+        idf0: 0
+        idf1: 1
+        idf2: 2
+        idt1: -1
+        idt2: -2
+        idt3: -3
+    mensaje:
+        idf0: Operación Exitosa
+        idf1: Se debe enviar campos obligatorios
+        idf2: No se obtuvo resultados al consultar la tabla buypackage
+        idt1: Error de timeout en la bd $bd
+        idt2: Error de disponibilidad en la bd $bd
+        idt3: Ocurrió un error inesperado       
+
+                            
