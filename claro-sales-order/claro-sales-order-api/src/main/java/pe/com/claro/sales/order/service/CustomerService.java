@@ -31,6 +31,7 @@ public class CustomerService {
     @HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod")
     public Customer getPostCustomer(Long customerId) {
         logger.debug("Get post " + customerId);
+        logger.info("Get postw " + customerId);
         Customer customer = customerRepository.findOne(customerId);
 //		producer.produce(customer);
         return customer;
