@@ -39,6 +39,7 @@ public class CustomerService {
 
     public Customer getTokenHystrixFallbackMethod(Long customerId) {
         logger.error("Error en el Sistema Intente Nuevamente ");
+        logger.info("Error en el Sistema Intente Nuevamente ");
         //Customer customer = null;
 
         throw new CustomEntityNotFoundException(message001 + " " + customerId.toString());
