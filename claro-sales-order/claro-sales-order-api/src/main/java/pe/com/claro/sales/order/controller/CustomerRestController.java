@@ -35,8 +35,8 @@ class CustomerRestController {
     private CustomerService customerService;
 
     @RequestMapping(value = "/{customerId}", method = RequestMethod.GET, produces = APPLICATION_JSON_VALUE)
-//    @ApiOperation(value = "Buscar cliente por id",
-//            notes = "Retorna la información de un cliente en especifico")
+    @ApiOperation(value = "Buscar cliente por id",
+            notes = "Retorna la información de un cliente en especifico")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     Customer search(@PathVariable Long customerId) {
