@@ -20,7 +20,7 @@
 		<junit.version>4.7</junit.version>
 		<log4j.version>1.2.16</log4j.version>
 		<slf4j.version>1.6.1</slf4j.version>
-		<spring-cloud.version>Finchley.M9</spring-cloud.version>
+		<spring-cloud.version>Edgware.SR3</spring-cloud.version>
 	</properties>
 
 	<parent>
@@ -159,7 +159,7 @@
 		<repository>
 			<id>releases</id>
 			<name>Nexus Release</name>
-			<url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url>
+			<url>http://nexus-cicd.192.168.99.100.nip.io/repository/Release/</url>
 		</repository>
 	</distributionManagement>
 

@@ -33,7 +33,7 @@ public class CustomerService {
     
      @HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod",
                     commandProperties = {
-                            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "500")
+                            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
                     })
     public Customer getPostCustomer(Long customerId) {
         //logger.debug("Get post " + customerId);

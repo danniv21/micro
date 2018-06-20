@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-     <!--<parent>
+    <!--<parent>
         <groupId>pe.com.claro</groupId>
         <artifactId>claro-sales-order</artifactId>
         <version>1.0.0</version>
@@ -71,11 +71,36 @@
             <artifactId>logback-core</artifactId>
             <version>1.2.3</version>
         </dependency>
-     <dependency>
-    <groupId>org.sonarsource.scanner.maven</groupId>
-    <artifactId>sonar-maven-plugin</artifactId>
-    <version>3.4.0.905</version>
-    </dependency>
+        <dependency>
+            <groupId>org.sonarsource.scanner.maven</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.4.0.905</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>2.0.2.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
+            <version>2.0.1.RELEASE</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
     </dependencies> 
     <build>
         <finalName>salesorderapi</finalName>
@@ -105,68 +130,68 @@
             </plugin>
         </plugins>
     </build>
-	     <profiles>
-    <profile>
-      <id>sonar-coverage</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.jacoco</groupId>
-              <artifactId>jacoco-maven-plugin</artifactId>
-              <version>0.7.8</version>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-        <plugins>
-          <plugin>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <configuration>
-              <append>true</append>
-            </configuration>
-            <executions>
-              <execution>
-                <id>agent-for-ut</id>
-                <goals>
-                  <goal>prepare-agent</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>agent-for-it</id>
-                <goals>
-                  <goal>prepare-agent-integration</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>jacoco-site</id>
-                <phase>verify</phase>
-                <goals>
-                  <goal>report</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+    <profiles>
+        <profile>
+            <id>sonar-coverage</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.jacoco</groupId>
+                            <artifactId>jacoco-maven-plugin</artifactId>
+                            <version>0.7.8</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <configuration>
+                            <append>true</append>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>agent-for-ut</id>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>agent-for-it</id>
+                                <goals>
+                                    <goal>prepare-agent-integration</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>jacoco-site</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 	
-	<distributionManagement>
-		 <repository>
-			<id>releases</id>
-			 <name>Nexus Release</name>
-			<!-- <url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url> -->
-			<url>http://nexus-cicd.192.168.99.100.nip.io/repository/Release/</url> 
-		</repository> 
-		<!-- <snapshotRepository> -->
-			<!-- <id>snapshots</id> -->
-			<!-- <name>Nexus Snapshots</name> -->
-			<!-- <url>http://nexus-cicd.192.168.99.100.nip.io/repository/snapshots/</url> -->
-		<!-- </snapshotRepository> -->
-	</distributionManagement> 
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>Nexus Release</name>
+            <!-- <url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/repositories/releases/</url> -->
+            <url>http://nexus-cicd.192.168.99.100.nip.io/repository/Release/</url> 
+        </repository> 
+        <!-- <snapshotRepository> -->
+        <!-- <id>snapshots</id> -->
+        <!-- <name>Nexus Snapshots</name> -->
+        <!-- <url>http://nexus-cicd.192.168.99.100.nip.io/repository/snapshots/</url> -->
+        <!-- </snapshotRepository> -->
+    </distributionManagement> 
    
 </project>
