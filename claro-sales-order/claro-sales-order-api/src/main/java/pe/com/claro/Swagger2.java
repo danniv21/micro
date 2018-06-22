@@ -18,7 +18,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2 {
 
-    private static final Logger logger = LoggerFactory.getLogger(Swagger2.class);
 
     @Value("${swagger2.package}")
     private String basePackage;

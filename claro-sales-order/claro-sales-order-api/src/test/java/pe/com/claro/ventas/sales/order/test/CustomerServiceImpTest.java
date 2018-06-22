@@ -5,45 +5,42 @@
  */
 package pe.com.claro.ventas.sales.order.test;
 
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import pe.com.claro.sales.order.service.CustomerService;
-import pe.com.claro.sales.order.controller.CustomerRestController;
-import pe.com.claro.sales.order.model.Customer;
-import static org.junit.Assert.assertNotNull;
+import java.util.Collection;
+
+import static org.junit.Assert.*;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
-import org.springframework.boot.test.context.SpringBootTest;
-import pe.com.claro.Application;
+import pe.com.claro.sales.order.model.Customer;
+import pe.com.claro.sales.order.repository.CustomerRepository;
+import pe.com.claro.sales.order.service.CustomerService;
 
 /**
  *
  * @author user
  */
 @RunWith(MockitoJUnitRunner.class)
-public class CustomerRestControllerTest {
+public class CustomerServiceImpTest {
 
     @Mock
+    private CustomerRepository customerRepository;
     private CustomerService customerService;
-    private CustomerRestController customerRestController;
 
     @Before
     public void setUp() throws Exception {
-        customerRestController = new CustomerRestController(customerService);
-
+        customerService = new CustomerService(customerRepository);
     }
-
     @Test
     public void searchUserTest() throws Exception {
         final Customer savedCustomer = stubServiceToReturnStoredCustomer();
-        Customer returnedSearch = customerRestController.search(new Long("1"));
+        Customer returnedSearch = customerService.getPostCustomer(new Long("1"));
         assertEquals(savedCustomer.getCustomerEmail(), returnedSearch.getCustomerEmail());
-        verify(customerService, times(1)).getPostCustomer(new Long("1"));
+        verify(customerRepository, times(1)).findOne(new Long("1"));
     }
-
     private Customer stubServiceToReturnStoredCustomer() {
         final Customer customer = Utiltest.createCustomer();
         when(customerService.getPostCustomer(anyLong())).thenReturn(customer);

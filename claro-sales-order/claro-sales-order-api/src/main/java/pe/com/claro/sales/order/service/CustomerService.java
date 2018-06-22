@@ -14,6 +14,7 @@ import pe.com.claro.sales.order.model.Customer;
 import pe.com.claro.sales.order.repository.CustomerRepository;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import javax.inject.Inject;
 
 @Service
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
@@ -27,17 +28,16 @@ public class CustomerService {
 
     @Value("${application.appname.customerservice.message001}")
     private String message001;
-
+    @Inject
+    public CustomerService(final CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
     @Transactional(readOnly = true)
-    //@HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod")
-    
-     @HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod",
-                    commandProperties = {
-                            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
-                    })
+    @HystrixCommand(fallbackMethod = "getTokenHystrixFallbackMethod",
+            commandProperties = {
+                @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000")
+            })
     public Customer getPostCustomer(Long customerId) {
-        //logger.debug("Get post " + customerId);
-        logger.info("Get postw " + customerId);
         Customer customer = customerRepository.findOne(customerId);
 //		producer.produce(customer);
         return customer;
@@ -45,11 +45,11 @@ public class CustomerService {
 
     public Customer getTokenHystrixFallbackMethod(Long customerId) {
         logger.error("Error en el Sistema Intente Nuevamente ");
-       // logger.info("Error en el Sistema Intente Nuevamentes ");
+        // logger.info("Error en el Sistema Intente Nuevamentes ");
         //Customer customer = null;
         //Customer cus= new Customer();
-       // cus.setId(customerId);
-       // return cus;
+        // cus.setId(customerId);
+        // return cus;
         throw new CustomEntityNotFoundException(message001 + " " + customerId.toString());
         //Customer customer = null;
 //        if (customer == null) {

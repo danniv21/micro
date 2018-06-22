@@ -19,11 +19,11 @@ import pe.com.claro.sales.order.model.CustomerAddress;
  */
 class Utiltest {
 
-    private static String customerEmail = "nombre@gmail.com";
-    private static String customerLastName = "Ruiz Gonzales";
-    private static String customerName = "Christian ";
-    private static byte status = 1;
-    private static CustomerAddress customerAddresses = new CustomerAddress();
+    private static final String customerEmail = "nombre@gmail.com";
+    private static final String customerLastName = "Ruiz Gonzales";
+    private static final String customerName = "Christian ";
+    private static final byte status = 1;
+    private static final CustomerAddress customerAddresses = new CustomerAddress();
 
     private Utiltest() {
         customerAddresses.setAddress("");
