@@ -14,10 +14,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import pe.com.claro.sales.order.service.CustomerService;
 import pe.com.claro.sales.order.controller.CustomerRestController;
 import pe.com.claro.sales.order.model.Customer;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.*;
-import org.springframework.boot.test.context.SpringBootTest;
-import pe.com.claro.Application;
 
 /**
  *

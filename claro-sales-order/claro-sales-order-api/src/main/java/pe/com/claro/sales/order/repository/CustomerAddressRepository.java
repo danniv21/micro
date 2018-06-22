@@ -8,6 +8,4 @@ import pe.com.claro.sales.order.model.CustomerAddress;
 @Repository
 @Transactional
 public interface CustomerAddressRepository extends JpaRepository<CustomerAddress, Long> {
-	//List<Direccion> findByOriginAndDestinationAndFlightDate(String origin,String destination, String flightDate);
-	//Direccion findByFlightNumberAndFlightDate(String flightNumber, String flightDate);
 } 

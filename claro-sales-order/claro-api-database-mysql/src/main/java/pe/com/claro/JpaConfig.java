@@ -22,9 +22,9 @@ import com.zaxxer.hikari.HikariDataSource;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories({"pe.com.claro"})
-class JpaConfig implements TransactionManagementConfigurer {
+public class JpaConfig implements TransactionManagementConfigurer {
 
-    @Value("${spring.dataSource.driverClassName}")
+    @Value("${spring.dataSource.driverClassName:Default}")
     private String driver;
     @Value("${spring.dataSource.url}")
     private String url;
@@ -34,7 +34,7 @@ class JpaConfig implements TransactionManagementConfigurer {
     private String password;
     @Value("${spring.hibernate.dialect}")
     private String dialect;
-/*    @Value("${spring.hibernate.hbm2ddl.auto}")
+    /*    @Value("${spring.hibernate.hbm2ddl.auto}")
     private String hbm2ddlAuto;*/
     @Value("${spring.hibernate.show_sql}")
     private Boolean showSql;
@@ -42,30 +42,32 @@ class JpaConfig implements TransactionManagementConfigurer {
     private Boolean format_sql;
     @Value("${entity.manager.packagesToScan}")
     private String packagesToScan;
-    
+
     @Value("${spring.hibernate.unicode}")
     private String unicode;
-    
+
     @Value("${spring.hibernate.characterEncoding}")
     private String characterEncoding;
-    
+
     @Value("${spring.hibernate.cachePrepStmts}")
     private String cachePrepStmts;
-    
+
     @Value("${spring.hibernate.prepStmtCacheSize}")
     private String prepStmtCacheSize;
-      
+
     @Value("${spring.hibernate.prepStmtCacheSqlLimit}")
     private String prepStmtCacheSqlLimit;
-    
+
     @Value("${spring.hibernate.useServerPrepStmts}")
     private String useServerPrepStmts;
-    
+
     @Value("${spring.dataSource.connectionTimeout}")
     private long connectionTimeout;
-    
-    
-    
+
+    public JpaConfig() {
+        System.out.println("Driverr"+driver);
+    }
+
     @Bean
     public DataSource configureDataSource() {
         HikariConfig config = new HikariConfig();
@@ -91,7 +93,7 @@ class JpaConfig implements TransactionManagementConfigurer {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(configureDataSource());
-      //  entityManagerFactoryBean.setPackagesToScan("com.raysmond.blog");
+        //  entityManagerFactoryBean.setPackagesToScan("com.raysmond.blog");
         entityManagerFactoryBean.setPackagesToScan(packagesToScan);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
@@ -108,5 +110,9 @@ class JpaConfig implements TransactionManagementConfigurer {
     @Bean(name = "transactionManager")
     public PlatformTransactionManager annotationDrivenTransactionManager() {
         return new JpaTransactionManager();
+    }
+
+    public String getDriverName() {
+        return driver;
     }
 }
