@@ -13,14 +13,13 @@ import org.springframework.validation.ObjectError;
 import javax.validation.ConstraintViolation;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 @Data
 @JsonTypeInfo(include = JsonTypeInfo.As.WRAPPER_OBJECT, use = JsonTypeInfo.Id.CUSTOM, property = "error", visible = true)
 @JsonTypeIdResolver(LowerCaseClassNameResolver.class)
-class ApiError {
+public class ApiError {
 
     private HttpStatus status;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
@@ -29,7 +28,7 @@ class ApiError {
     private String debugMessage;
     private List<ApiSubError> subErrors;
 
-    private ApiError() {
+    public ApiError() {
         timestamp = LocalDateTime.now();
     }
 
@@ -107,14 +106,14 @@ class ApiError {
 
 
 
-    abstract class ApiSubError {
+    interface ApiSubError {
 
     }
 
     @Data
     @EqualsAndHashCode(callSuper = false)
     @AllArgsConstructor
-    class ApiValidationError extends ApiSubError {
+    class ApiValidationError implements ApiSubError {
         private String object;
         private String field;
         private Object rejectedValue;
