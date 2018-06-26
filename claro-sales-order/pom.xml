@@ -19,6 +19,7 @@
 		<module>claro-rest-api-common</module>
 		<module>claro-api-database-mysql</module>
 		<module>claro-api-messaging-producer</module>
+		<module>claro-rest-api-client</module>
 
 	</modules>
 
