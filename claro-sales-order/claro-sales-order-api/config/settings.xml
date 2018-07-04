@@ -3,8 +3,8 @@
     <mirror> <!--Send all requests to the public group -->
       <id>nexus</id>
       <mirrorOf>*</mirrorOf>
-		<url>http://nexus-cicd.192.168.99.100.nip.io/repository/maven-all-public/</url>
-      <!-- <url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/groups/public/</url> -->
+		<!-- <url>http://nexus-cicd.192.168.99.100.nip.io/repository/maven-all-public/</url> -->
+      <url>http://nexus-ci-cd.cloudapps.tim.com.pe/content/groups/public/</url> 
     </mirror>
   </mirrors>
   <activeProfiles>
@@ -45,15 +45,6 @@
     <activation>
         <activeByDefault>true</activeByDefault>
     </activation> 
-	<properties>
-    <sonar.host.url>
-         http://sonarqube-cicd.192.168.99.100.nip.io
-     </sonar.host.url>
-      <sonar.login>428536faa6cfafaf00975ae578177199fdf51573</sonar.login>	
-    <!--		
-            <sonar.login>admin</sonar.login>
-            <sonar.password>admin</sonar.password> -->
-      </properties>
    </profile>
   </profiles>
 
