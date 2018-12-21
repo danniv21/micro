@@ -11,4 +11,4 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/cruizg/conf
+          uri: http://gogs-ci-cd.cloudapps.tim.com.pe/gogs/conf
